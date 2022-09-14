@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task1/category_programs.dart';
+import 'package:task1/programs_category.dart';
 import 'package:task1/events_and_experiences.dart';
 import 'package:task1/lessons_category.dart';
-//import 'package:flutter_svg/svg.dart';
-
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -83,7 +81,7 @@ class MyHomePage extends StatelessWidget {
           ),
 
           Container(
-            padding: const EdgeInsets.all(16),
+            // padding: const EdgeInsets.all(16),
             child: Column(
               children: const [
                 ProgramsBar(title: 'Programs For You'),
@@ -146,29 +144,31 @@ class ProgramsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headline1,
-        ),
-        TextButton(
-          onPressed: () {},
-          child: Row(
-            children:  [
-              Text(
-                'View all',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-              const Icon(
-                Icons.arrow_forward,
-                color: Color(0xFF6D747A),
-              )
-            ],
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.headline1,
           ),
-        ),
-      ],
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              children:  [
+                Text(
+                  'View all',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+
+                   const Icon(Icons.arrow_forward,color: Color(0xFF6D747A),),
+
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

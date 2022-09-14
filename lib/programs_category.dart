@@ -1,32 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:task1/models/lesson.dart';
+import 'package:task1/models/program.dart';
 
-class LessonsCategory extends StatefulWidget {
-  const LessonsCategory({Key? key}) : super(key: key);
+class CategoryPrograms extends StatefulWidget {
+  const CategoryPrograms({Key? key}) : super(key: key);
 
   @override
-  State<LessonsCategory> createState() => _LessonsCategoryState();
+  State<CategoryPrograms> createState() => _CategoryProgramsState();
 }
 
-class _LessonsCategoryState extends State<LessonsCategory> {
-
-  late Future<List<Lesson>> lessonData;
+class _CategoryProgramsState extends State<CategoryPrograms> {
+  late Future<List<Program>> programData;
 
 
   @override
   void initState() {
-    lessonData= getLessonInfo() ;
+    programData= getProgramInfo() ;
     super.initState();
   }
   @override
+
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        children:  [
-          FutureBuilder<List<Lesson>>(
-              future: lessonData,
+        // children: const [
+        //   ProgramsItems(
+        //     title: 'LIFESTYLE',
+        //     description: 'A complete guide for your new born baby',
+        //     lessonsCount: '16 Lessons',
+        //     imagePath: 'assets/images/Frame 122.jpg',
+        //   ),
+        //   ProgramsItems(
+        //     title: 'Working Parents',
+        //     description: 'Understanding of human behaviour',
+        //     lessonsCount: '12 Lessons',
+        //     imagePath: 'assets/images/Frame 123.jpg',
+        //   ),
+        //
+        // ],
+        children: [
+          FutureBuilder<List<Program>>(
+            future: programData,
               builder: (context,snapshot){
                 return snapshot.hasData? Expanded(
                   child: SizedBox(
@@ -34,14 +49,14 @@ class _LessonsCategoryState extends State<LessonsCategory> {
                     height: 300,
 
                     child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.horizontal,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context,index){
-                          return LessonsItems(
+                          return ProgramsItems(
                               title: snapshot.data![index].category,
                               description: snapshot.data![index].name,
-                              duration: snapshot.data![index].duration.toString(),
-                              imagePath: 'assets/images/young-woman-doing-natarajasana-exercise 1.jpg');
+                              lessonsCount: snapshot.data![index].lesson.toString(),
+                              imagePath: 'assets/images/Frame 122.jpg');
 
 
 
@@ -57,15 +72,14 @@ class _LessonsCategoryState extends State<LessonsCategory> {
     );
   }
 }
-
-class LessonsItems extends StatelessWidget {
-  const LessonsItems({
-    Key? key, required this.title, required this.description, required this.duration, required this.imagePath,
+class ProgramsItems extends StatelessWidget {
+  const ProgramsItems({
+    Key? key, required this.title, required this.description, required this.lessonsCount, required this.imagePath,
   }) : super(key: key);
 
   final String title;
   final String description;
-  final String duration;
+  final String lessonsCount;
   final String imagePath;
 
 
@@ -87,6 +101,7 @@ class LessonsItems extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.only(
@@ -102,21 +117,13 @@ class LessonsItems extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all( 10),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-                    Text(title,style: Theme.of(context).textTheme.bodyText2,),
-                    Text(description,style: Theme.of(context).textTheme.bodyText1,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('$duration min',style: Theme.of(context).textTheme.headline2,
-                        ),
-                        const Icon(Icons.lock_outline,color: Color(0xFF6D747A),)
-
-                      ],
-                    )
+                    Text(title,style:Theme.of(context).textTheme.bodyText2,),
+                    Text(description,style:Theme.of(context).textTheme.bodyText1,),
+                    Text('$lessonsCount Lesson',style: Theme.of(context).textTheme.headline2,)
                   ],
                 ),
               ),
@@ -127,5 +134,3 @@ class LessonsItems extends StatelessWidget {
     );
   }
 }
-
-

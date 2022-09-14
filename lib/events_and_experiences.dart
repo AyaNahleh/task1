@@ -7,23 +7,26 @@ class EventsAndExperiences extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const [
-          EventsAndExperiencesItems(
-            title: 'Working Parents',
-            description: 'Understanding of human behaviour',
-            lessonsCount: '13 Feb, Sunday ',
-            imagePath: 'assets/images/young-woman-doing-natarajasana-exercise 1.jpg',
-          ),
-          EventsAndExperiencesItems(
-            title: 'Working Parents',
-            description: 'Understanding of human behaviour',
-            lessonsCount: '13 Feb, Sunday',
-            imagePath: 'assets/images/young-woman-doing-natarajasana-exercise 1.jpg',
-          ),
+      child: Container(
+        padding: EdgeInsets.only(left: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const [
+            EventsAndExperiencesItems(
+              title: 'Working Parents',
+              description: 'Understanding of human behaviour',
+              lessonsCount: '13 Feb, Sunday ',
+              imagePath: 'assets/images/young-woman-doing-natarajasana-exercise 1.jpg',
+            ),
+            EventsAndExperiencesItems(
+              title: 'Working Parents',
+              description: 'Understanding of human behaviour',
+              lessonsCount: '13 Feb, Sunday',
+              imagePath: 'assets/images/young-woman-doing-natarajasana-exercise 1.jpg',
+            ),
 
-        ],
+          ],
+        ),
       ),
     );
   }
