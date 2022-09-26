@@ -4,4 +4,6 @@ A new Flutter project.
 
 ## Getting Started
 
-![Screenshot_٢٠٢٢٠٩٢٦-١٥٥٦٠٩](https://user-images.githubusercontent.com/92157668/192308239-18192009-fbed-4019-b3b9-0cce8311c133.jpg 100x20)
+<img src="https://user-images.githubusercontent.com/92157668/192308239-18192009-fbed-4019-b3b9-0cce8311c133.jpg" width="30" height="60">
+
+
